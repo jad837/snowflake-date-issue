@@ -21,7 +21,7 @@ public class Example {
         var log = LoggerFactory.getLogger(Example.class);
         log.debug("Fetching max date for table: {} & dates : {}", tableName, dates.toString());
         try (var con = dbConnection()) {
-            var statement = con.prepareStatement("SELECT max(purchased_on) AS max_date FROM PURCHASES where purchased_on IN ('2023-01-01', '2022-12-31) limit 1");
+            var statement = con.prepareStatement("SELECT max(purchased_on) AS max_date FROM PURCHASES where purchased_on IN ('2023-01-01', '2022-12-31') limit 1");
             var result = statement.executeQuery();
             result.next();
             var maxDate = result.getDate("max_date");
